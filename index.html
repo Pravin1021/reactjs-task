@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM WEB</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <section class="login" id="login">
+        <div class="container">
+            <div class="formmain">
+                <form action=""  id="myform" onsubmit="return false">
+                    <div class="mail">
+                        <input type="email" placeholder="Enter Your Email" id="email">
+                    </div>
+                    <div class="id">
+                        <input type="text" placeholder="Enter Your ID" id="id">
+                    </div>
+                    <button type="submit" id="logbtn">LOGIN</button>
+                    <div>
+                        <h5 id="success"></h5>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <section id="signup">
+        <div class="container">
+            <div class="signform">
+                <form action="" id="form2">
+                    <div class="signmail">
+                        <input type="email" placeholder="Enter Your Email" id="signemail">
+                    </div>
+                    <div class="signid">
+                        <input type="text" placeholder="Enter Your ID" id="signid">
+                    </div>
+                    <button type="submit" id="signbtn">Create</button>
+                    <div>
+                        <h5 id="signsuccess"></h5>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <section id="about">
+        <div class="container">
+            <div class="all">
+
+            </div>
+        </div>
+    </section>
+    <script>
+        var objlogin=[{
+            email:"mpravin1021@gmail.com",
+            id:1
+        },
+        {
+            email:"rupu@gamil.com",
+            id:2
+        },
+        {
+            email:"vel@gmail.com",
+            id:3
+        }
+    ]
+    
+        //getting value by id
+        let form = document.getElementById("myform")
+        var email=document.getElementById("email")
+        var id=document.getElementById("id")
+        var success=document.getElementById("success")
+        var form1=document.getElementById("myform")
+        document.getElementById("signup").style.display="none"
+        //function for validation
+        form1.addEventListener("submit",function(e){
+            e.preventDefault();
+            
+            objlogin.forEach((a,index)=>{
+                if(a.email==email.value && a.id==id.value){
+                    success.innerHTML="Successfully Loggedin"
+                    document.getElementById("login").style.display="none"
+                    document.getElementById("about").style.display="block"
+                }
+                else if(objlogin.length == index ){
+                    alert("Invalid User")
+                }
+            })
+            })
+
+            //signup form 
+            var form2=document.getElementById("form2")
+            var signemail=document.getElementById("signemail")
+            var signid=document.getElementById("signid")
+            
+
+            form2.addEventListener("submit",function(e){
+                e.preventDefault()
+                
+                let  newemail=signemail.value
+                let  newid=signid.value
+                var newuser={
+                    email:newemail,
+                    id:newid
+                   }
+                    objlogin.push(newuser)
+                   form2.submit()
+            })
+
+
+            //creating document
+            
+
+            var detailobj=[{
+                name:"TATA",
+                year:2021,
+                varient:"Petrol",
+                price:500000,
+                image:"url(./nano.jpg)"
+            },
+            {
+                name:"TATA",
+                year:2022,
+                varient:"Petrol",
+                price:400000,
+                image:"url(./Altrozjpg.jpg)"
+            },
+            {
+                name:"MARUTI",
+                year:2020,
+                varient:"Petrol",
+                price:600000,
+                image:"url(./ertiga.jpg)"
+            },
+            {
+                name:"MARUTI",
+                year:2022,
+                varient:"Petrol",
+                price:1000000,
+                image:"url(./swift.jifi)"
+            },
+            {
+                name:"FIAT",
+                year:2017,
+                varient:"Petrol",
+                price:300000,
+                image:"url(./Fiat.jpg)"
+            },
+            {
+                name:"FORD",
+                year:2019,
+                varient:"Petrol",
+                price:700000,
+                image:"url(./endeavour.avif)"
+            }
+
+        ]
+
+           detailobj.forEach((e)=>{
+            var all=document.getElementById("all")
+            var outerdiv=document.createElement("div")
+            var imgdiv=document.createElement("div")
+            var contentdiv=document.createElement("div")
+            var name=document.createElement("h1")
+            var year=document.createElement("h5")
+            var varient=document.createElement("span")
+            var price=document.createElement("p")
+            var about=document.getElementById("about")
+
+            imgdiv.style.backgroundImage=e.image
+            name.innerHTML=e.name
+            year.innerHTML=e.year
+            varient.innerHTML=e.varient
+            price.innerHTML=e.price
+
+            all.append(imgdiv,name,year,varient,price)
+           })
+
+               
+        
+    </script>
+</body>
+</html>
